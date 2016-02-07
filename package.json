@@ -1,7 +1,7 @@
 {
   "name": "hubot-sentry-webhook",
   "description": "Listens as a webhook for Sentry",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Eric <ecoan@instructure.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, sentry, chatops",
