@@ -2,7 +2,7 @@
 
 Listens as a webhook for Sentry.
 
-See [`src/sentry-webhook.coffee`](src/sentry-webhook.coffee) for full documentation.
+See [`src/sentry-webhook.coffee`][(url)] for full documentation.
 
 ## Installation
 
@@ -17,3 +17,5 @@ Then add **hubot-sentry-webhook** to your `external-scripts.json`:
   "hubot-sentry-webhook"
 ]
 ```
+
+[url]: https://github.com/LordLambda/hubot-sentry-webhook/blob/master/src/sentry-webhook.coffee

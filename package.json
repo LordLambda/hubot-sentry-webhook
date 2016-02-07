@@ -1,16 +1,16 @@
 {
   "name": "hubot-sentry-webhook",
   "description": "Listens as a webhook for Sentry",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Eric <ecoan@instructure.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, sentry, chatops",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-sentry-webhook.git"
+    "url": "git://github.com/LordLambda/hubot-sentry-webhook.git"
   },
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-sentry-webhook/issues"
+    "url": "https://github.com/LordLambda/hubot-sentry-webhook/issues"
   },
   "dependencies": {
   },
