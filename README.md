@@ -1,7 +1,8 @@
 # hubot-sentry-webhook
 
-Listens as a webhook for Sentry.
+[![Build Status](https://travis-ci.org/LordLambda/hubot-sentry-webhook.svg?branch=master)](https://travis-ci.org/LordLambda/hubot-sentry-webhook)
 
+Listens as a webhook for Sentry.
 See [`src/sentry-webhook.coffee`][url] for full documentation.
 
 ## Installation
