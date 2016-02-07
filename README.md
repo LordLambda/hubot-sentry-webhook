@@ -1,6 +1,6 @@
 # hubot-sentry-webhook
 
-Listens as a webhook for Sentry
+Listens as a webhook for Sentry.
 
 See [`src/sentry-webhook.coffee`](src/sentry-webhook.coffee) for full documentation.
 
@@ -16,11 +16,4 @@ Then add **hubot-sentry-webhook** to your `external-scripts.json`:
 [
   "hubot-sentry-webhook"
 ]
-```
-
-## Sample Interaction
-
-```
-user1>> hubot hello
-hubot>> hello!
 ```
