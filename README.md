@@ -2,7 +2,7 @@
 
 Listens as a webhook for Sentry.
 
-See [`src/sentry-webhook.coffee`][(url)] for full documentation.
+See [`src/sentry-webhook.coffee`][url] for full documentation.
 
 ## Installation
 
