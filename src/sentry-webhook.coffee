@@ -25,18 +25,19 @@ module.exports = (robot) ->
   robot.router.post '/sentry/:room', (req, res) ->
     room = (process.env.PRE_ROOM || '') + req.params.room + (process.env.POST_ROOM || '')
     template = req.body.project_name + ' triggered a new ' + req.body.level + ': ' + req.body.culprit  + ' [ ' + req.body.url + ' ] [ '
-    tags = req.body.tags
+    tags = req.body.event.tags
     first = false
     i = 0
-    while i < tags.length
-      tag = tags[i]
-      if filterTags.indexOf(tag) > -1
-        if first
-          template += tag.toSource().toString
-          first = true
-        else
-          template += ',' + tag.toSource().toString
-      ++i
+    if tags
+      while i < tags.length
+        tag = tags[i]
+        if filterTags.indexOf(tag) > -1
+          if first
+            template += tag.toSource().toString
+            first = true
+          else
+            template += ',' + tag.toSource().toString
+        ++i
     template += ' ].'
     robot.messageRoom room, template
     res.status(201).end 'OK'
