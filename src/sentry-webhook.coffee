@@ -4,6 +4,7 @@
 # Configuration:
 #   PRE_ROOM - An optional String to prepend to the room string (i.e. for slack the '#' sign).
 #   POST_ROOM - An optional String to append to the room string
+#   TAGS - A comma seperated list of tags to post.
 #
 # Commands:
 #   None
@@ -18,10 +19,25 @@
 # Author:
 #   Eric <ecoan@instructure.com>
 
+filterTags = (proccess.env.TAGS ? process.env.TAGS.split(',') : [])
+
 module.exports = (robot) ->
   robot.router.post '/sentry/:room', (req, res) ->
     room = (process.env.PRE_ROOM || '') + req.params.room + (process.env.POST_ROOM || '')
-    template = req.body.project_name + ' triggered a new ' + req.body.level + ': ' + req.body.message + ' [ ' + req.body.url + ' ].'
+    template = req.body.project_name + ' triggered a new ' + req.body.level + ': ' + req.body.culprit  + ' [ ' + req.body.url + ' ] [ '
+    tags = req.body.tags
+    first = false
+    i = 0
+    while i < tags.length
+      tag = tags[i]
+      if filterTags.indexOf(tag) > -1
+        if first
+          template += tag.toSource().toString
+          first = true
+        else
+          template += ',' + tag.toSource().toString
+      ++i
+    template += ' ].'
     robot.messageRoom room, template
     res.status(201).end 'OK'
 
