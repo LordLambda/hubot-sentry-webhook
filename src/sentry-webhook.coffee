@@ -19,7 +19,7 @@
 # Author:
 #   Eric <ecoan@instructure.com>
 
-filterTags = (proccess.env.TAGS ? process.env.TAGS.split(',') : [])
+filterTags = if process.env.tags then process.env.tags(',') else []
 
 module.exports = (robot) ->
   robot.router.post '/sentry/:room', (req, res) ->
