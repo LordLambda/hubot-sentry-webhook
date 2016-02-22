@@ -19,26 +19,25 @@
 # Author:
 #   Eric <ecoan@instructure.com>
 
-filterTags = if process.env.tags then process.env.tags(',') else []
+filterTags = if process.env.TAGS then process.env.TAGS.split(',') else []
 
 module.exports = (robot) ->
   robot.router.post '/sentry/:room', (req, res) ->
     room = (process.env.PRE_ROOM || '') + req.params.room + (process.env.POST_ROOM || '')
-    template = req.body.project_name + ' triggered a new ' + req.body.level + ': ' + req.body.culprit  + ' [ ' + req.body.url + ' ] [ '
+    template = req.body.project_name + ' triggered a new ' + req.body.level + ': ' + req.body.culprit  + '\n' + req.body.url + '\n'
     tags = req.body.event.tags
     first = false
     i = 0
     if tags
       while i < tags.length
         tag = tags[i]
-        if filterTags.indexOf(tag) > -1
+        if filterTags.indexOf(tag['0']) > -1
           if first
-            template += tag.toSource().toString
+            template += tag['0'].toString() + ': ' + tag['1'].toString()
             first = true
           else
-            template += ',' + tag.toSource().toString
+            template += ',' + tag['0'].toString() + ': ' + tag['1'].toString()
         ++i
-    template += ' ].'
     robot.messageRoom room, template
     res.status(201).end 'OK'
 
